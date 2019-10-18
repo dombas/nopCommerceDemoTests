@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import pl.dominikd.nopcommerce.demo.base.TestBase;
 import pl.dominikd.nopcommerce.demo.pages.MainPage;
 import pl.dominikd.nopcommerce.demo.pages.SearchResultPage;
+import pl.dominikd.utils.StringUtils;
 
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class NopcommerceDemoTest extends TestBase {
 
         List<String> productTitles = searchResultPage.getSearchResultProductTitleTexts();
         for (String productTitle : productTitles) {
-            Assert.assertTrue(productTitle.contains(testSearchQuery));
+            Assert.assertTrue(StringUtils.containsIgnoreCase(productTitle, testSearchQuery));
         }
     }
 }
