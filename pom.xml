@@ -91,7 +91,7 @@
                         </properties>
                         <workingDirectory>target/</workingDirectory>
                         <testFailureIgnore>true</testFailureIgnore>
-                        <suiteXmlFiles>nopcommerce_suite.xml</suiteXmlFiles>
+                        <suiteXmlFiles>nopcommerce.xml</suiteXmlFiles>
                     </configuration>
                 </plugin>
                 <plugin>

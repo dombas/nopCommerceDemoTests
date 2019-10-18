@@ -1,0 +1,35 @@
+Main page
+  test page title
+  currency changer
+  search box
+  categories dropdown menu (on clicking, elements should change their display:none)
+  spinner (display of <a> should change every couple seconds and by clicking on dots/squares)
+  adding to cart from main page (HTC phone)
+
+Registration
+  test valid form
+  for each form input: test invalid data (form should not send, a message on correcting the entry should be shown)
+
+Login
+  test valid form
+  for each form input: test invalid data
+
+Product pages
+  build your own computer, macbook, gift card
+    customization forms
+      valid and invalid data
+    adding to cart
+    adding to product comparison
+
+Shopping cart
+  check if it contains the same products we added (amounts, prices, configurations)
+  changing items quantity
+  removing items
+  gift wrapping, discount code, gift card, estimate shipping forms
+  terms of service popup
+
+Product comparison
+  check if it contains the same products we added
+  
+  removing products
+  clearing list
