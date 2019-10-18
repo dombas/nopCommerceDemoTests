@@ -10,8 +10,31 @@ public class NopcommerceDemoTest extends TestBase {
     public void testTitle() {
         final String correctPageTitle = "nopCommerce demo store";
 
-        MainPage searchPage = new MainPage(driver);
+        MainPage mainPage = new MainPage(driver);
 
-        Assert.assertEquals(searchPage.getTitle(), correctPageTitle);
+        Assert.assertEquals(mainPage.getTitle(), correctPageTitle);
+    }
+
+    @Test
+    public void testCurrencyEuro() throws InterruptedException {
+        MainPage mainPage = new MainPage(driver);
+
+        mainPage.selectCurrencyEuro();
+        String priceText = mainPage.getFirstPriceText();
+
+        Assert.assertTrue(priceText.contains("\u20AC"));
+
+        //Assert.assertTrue(priceText.contains("\u0402")); //character used currently
+    }
+
+    @Test
+    public void testCurrencyDollar() throws InterruptedException {
+        MainPage mainPage = new MainPage(driver);
+
+        mainPage.selectCurrencyDollars();
+
+        String priceText = mainPage.getFirstPriceText();
+
+        Assert.assertTrue(priceText.contains("\u0024"));
     }
 }

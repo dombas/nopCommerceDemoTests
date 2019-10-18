@@ -1,6 +1,6 @@
 Main page
-  test page title
-  currency changer
+  OK test page title
+  OK currency changer
   search box
   categories dropdown menu (on clicking, elements should change their display:none)
   spinner (display of <a> should change every couple seconds and by clicking on dots/squares)
@@ -30,6 +30,6 @@ Shopping cart
 
 Product comparison
   check if it contains the same products we added
-  
+
   removing products
   clearing list
