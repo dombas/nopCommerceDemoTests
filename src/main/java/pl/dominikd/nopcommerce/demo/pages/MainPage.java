@@ -8,9 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class MainPage {
-    private WebDriver driver;
-
+public class MainPage extends AbstractPage {
     @FindBy(id = "customerCurrency")
     WebElement wannabeCurrencySelect;
     Select currencySelect;
@@ -18,9 +16,14 @@ public class MainPage {
     @FindBy(className = "actual-price")
     List<WebElement> priceSpans;
 
+    @FindBy(id = "small-searchterms")
+    WebElement searchInput;
+
+    @FindBy(className = "search-box-button")
+    WebElement searchButton;
+
     public MainPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
         this.currencySelect = new Select(wannabeCurrencySelect);
     }
 
@@ -38,5 +41,13 @@ public class MainPage {
 
     public String getFirstPriceText() {
         return priceSpans.get(0).getText();
+    }
+
+    public void sendKeysToSearchInput(String text) {
+        searchInput.sendKeys(text);
+    }
+
+    public void clickSearchSubmitButton() {
+        searchButton.click();
     }
 }
