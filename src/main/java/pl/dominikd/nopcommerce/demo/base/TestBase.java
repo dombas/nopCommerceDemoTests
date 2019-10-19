@@ -7,24 +7,40 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import pl.dominikd.utils.NopTestConfig;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    public final String url = "https://demo.nopcommerce.com/";
-    public WebDriver driver;
+    private static final String NOP_CONFIG_XML = "../nop-test-config.xml";
+    protected WebDriver driver;
+    private String url;
+    private String chosenWebDriver;
 
     @BeforeSuite
-    public void setChromePath() {
-        System.setProperty("webdriver.chrome.driver", "C:\\IdeaProjects\\demotests\\chromedriver.exe");
-        System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-        System.setProperty("webdriver.gecko.driver", "G:\\IdeaProjects\\nop\\geckodriver.exe");
+    public void setWebDriverPath() throws JAXBException, IOException {
+        JAXBContext context = JAXBContext.newInstance(NopTestConfig.class);
+        Unmarshaller um = context.createUnmarshaller();
+        NopTestConfig nopTestConfig = (NopTestConfig) um.unmarshal(new FileReader(
+                NOP_CONFIG_XML));
+
+        System.setProperty("webdriver.chrome.driver", nopTestConfig.getChromeDriverPath());
+        System.setProperty("webdriver.gecko.driver", nopTestConfig.getGeckoDriverPath());
+        this.url = nopTestConfig.getUrl();
+        this.chosenWebDriver = nopTestConfig.getWebDriver();
     }
 
     @BeforeTest
     public void setUp() {
-        //driver = new ChromeDriver();
-        driver = new FirefoxDriver();
+        if (chosenWebDriver.equals("FIREFOX"))
+            driver = new FirefoxDriver();
+        else
+            driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -32,7 +48,8 @@ public class TestBase {
     @AfterTest
     public void tearDown() {
         // chrome driver leaves processes running unless we first close() and then quit()
-        //driver.close();
+        if (chosenWebDriver.equals("CHROME"))
+            driver.close();
         driver.quit();
     }
 

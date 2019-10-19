@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<nopTestConfig>
+    <chromeDriverPath>C:\IdeaProjects\nop\chromedriver.exe</chromeDriverPath>
+    <geckoDriverPath>C:\IdeaProjects\nop\geckodriver.exe</geckoDriverPath>
+    <url>https://demo.nopcommerce.com/</url>
+    <webDriver>FIREFOX</webDriver>
+</nopTestConfig>
