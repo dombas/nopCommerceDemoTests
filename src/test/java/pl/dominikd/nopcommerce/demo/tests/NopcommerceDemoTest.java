@@ -18,7 +18,7 @@ public class NopcommerceDemoTest extends TestBase {
 
         MainPage mainPage = new MainPage(driver);
 
-        Assert.assertEquals(mainPage.getTitle(), correctPageTitle);
+        Assert.assertEquals(mainPage.getTitle(), correctPageTitle, "page title is not \"nopCommerce demo store\"");
     }
 
     @Test
@@ -28,7 +28,7 @@ public class NopcommerceDemoTest extends TestBase {
         mainPage.selectCurrencyEuro();
         String priceText = mainPage.getFirstPriceText();
 
-        Assert.assertTrue(priceText.contains("\u20AC"));
+        Assert.assertTrue(priceText.contains("\u20AC"), "first price doesn't contain euro sign");
 
         //Assert.assertTrue(priceText.contains("\u0402")); //character used currently
     }
@@ -41,7 +41,7 @@ public class NopcommerceDemoTest extends TestBase {
 
         String priceText = mainPage.getFirstPriceText();
 
-        Assert.assertTrue(priceText.contains("\u0024"));
+        Assert.assertTrue(priceText.contains("\u0024"), "first price doesn't contain dollar sign");
     }
 
     @Test
@@ -51,11 +51,12 @@ public class NopcommerceDemoTest extends TestBase {
         mainPage.clickSearchSubmitButton();
 
         SearchResultPage searchResultPage = new SearchResultPage(driver);
-        Assert.assertNotEquals(searchResultPage.getSearchResultCount(), 0);
+        Assert.assertNotEquals(searchResultPage.getSearchResultCount(), 0, "search results are empty");
 
         List<String> productTitles = searchResultPage.getSearchResultProductTitleTexts();
         for (String productTitle : productTitles) {
-            Assert.assertTrue(StringUtils.containsIgnoreCase(productTitle, testSearchQuery));
+            Assert.assertTrue(StringUtils.containsIgnoreCase(productTitle, testSearchQuery),
+                    "one of the search results doesn't contain the search query (\"testSearchQuery\")");
         }
     }
 
