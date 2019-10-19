@@ -58,4 +58,9 @@ public class NopcommerceDemoTest extends TestBase {
             Assert.assertTrue(StringUtils.containsIgnoreCase(productTitle, testSearchQuery));
         }
     }
+
+    @Test
+    public void testDropDownMenu() {
+
+    }
 }
