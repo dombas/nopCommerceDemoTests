@@ -41,5 +41,7 @@ public class BasePage extends AbstractPage {
         searchButton.click();
     }
 
-
+    public void openShoppingCart() {
+        cartLink.click();
+    }
 }

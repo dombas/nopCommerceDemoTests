@@ -6,6 +6,7 @@ import pl.dominikd.nopcommerce.demo.base.TestBase;
 import pl.dominikd.nopcommerce.demo.pages.MainPage;
 import pl.dominikd.nopcommerce.demo.pages.ProductPage;
 import pl.dominikd.nopcommerce.demo.pages.SearchResultPage;
+import pl.dominikd.nopcommerce.demo.pages.ShoppingCartPage;
 import pl.dominikd.utils.StringUtils;
 
 import java.util.List;
@@ -86,10 +87,13 @@ public class NopcommerceDemoTest extends TestBase {
         // add HTC to cart
         ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();
-        Thread.sleep(5000);
         // enter shopping cart page
+        productPage.openShoppingCart();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         // check if HTC is in cart
+        List<String> productNames = shoppingCartPage.getProductNames();
+        Assert.assertTrue(StringUtils.listContainsIgnoreCase(productNames, nameFragment),
+                "Shopping cart does not contain added product");
     }
-
 
 }

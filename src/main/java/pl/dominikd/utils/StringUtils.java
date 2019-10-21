@@ -1,5 +1,7 @@
 package pl.dominikd.utils;
 
+import java.util.List;
+
 public class StringUtils {
     //https://stackoverflow.com/users/1705598/icza
     //https://stackoverflow.com/a/25379180
@@ -21,6 +23,14 @@ public class StringUtils {
                 return true;
         }
 
+        return false;
+    }
+
+    public static boolean listContainsIgnoreCase(List<String> srcList, String what) {
+        for (String src : srcList) {
+            if (containsIgnoreCase(src, what))
+                return true;
+        }
         return false;
     }
 }
