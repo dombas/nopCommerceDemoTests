@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.dominikd.nopcommerce.demo.base.TestBase;
 import pl.dominikd.nopcommerce.demo.pages.MainPage;
+import pl.dominikd.nopcommerce.demo.pages.ProductPage;
 import pl.dominikd.nopcommerce.demo.pages.SearchResultPage;
 import pl.dominikd.utils.StringUtils;
 
@@ -66,10 +67,29 @@ public class NopcommerceDemoTest extends TestBase {
     }
 
     @Test
-    public void testAddToCart() {
+    public void testOpenProductPage() {
+        String nameFragment = "htc";
         MainPage mainPage = new MainPage(driver);
+        mainPage.openProductPageByName(nameFragment);
+
+        ProductPage productPage = new ProductPage(driver);
+        String productName = productPage.getProductName();
+        Assert.assertTrue(StringUtils.containsIgnoreCase(productName, nameFragment));
+    }
+
+    @Test
+    public void testAddToCart() throws InterruptedException {
+        MainPage mainPage = new MainPage(driver);
+        // go to HTC product page
+        String nameFragment = "htc";
+        mainPage.openProductPageByName(nameFragment);
         // add HTC to cart
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addToCart();
+        Thread.sleep(5000);
         // enter shopping cart page
         // check if HTC is in cart
     }
+
+
 }

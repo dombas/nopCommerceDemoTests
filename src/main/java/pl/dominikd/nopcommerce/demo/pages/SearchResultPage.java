@@ -3,12 +3,12 @@ package pl.dominikd.nopcommerce.demo.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pl.dominikd.nopcommerce.demo.base.AbstractPage;
+import pl.dominikd.nopcommerce.demo.base.BasePage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultPage extends AbstractPage {
+public class SearchResultPage extends BasePage {
 
     @FindBy(className = "product-title")
     List<WebElement> productTitles;

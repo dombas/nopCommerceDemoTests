@@ -5,10 +5,12 @@
         <classes>
             <class name="pl.dominikd.nopcommerce.demo.tests.NopcommerceDemoTest">
                 <methods>
-                    <include name="testTitle"/>
-                    <include name="testCurrencyEuro"/>
-                    <include name="testCurrencyDollar"/>
-                    <include name="testSearch"/>
+                    <!--                    <include name="testTitle"/>-->
+                    <!--                    <include name="testCurrencyEuro"/>-->
+                    <!--                    <include name="testCurrencyDollar"/>-->
+                    <!--                    <include name="testSearch"/>-->
+                    <!--                    <include name="testOpenProductPage"/>-->
+                    <include name="testAddToCart"/>
                 </methods>
             </class>
         </classes>
