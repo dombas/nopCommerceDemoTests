@@ -63,4 +63,12 @@ public class NopcommerceDemoTest extends TestBase {
     public void testDropDownMenu() {
 
     }
+
+    @Test
+    public void testAddToCart() {
+        MainPage mainPage = new MainPage(driver);
+        // add HTC to cart
+        // enter shopping cart page
+        // check if HTC is in cart
+    }
 }
