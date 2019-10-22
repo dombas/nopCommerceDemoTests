@@ -3,7 +3,6 @@ package pl.dominikd.nopcommerce.demo.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -53,7 +52,7 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterTest
+    //    @AfterTest
     public void tearDown() {
         // chrome driver leaves processes running unless we first close() and then quit()
         if (chosenWebDriver.equals("CHROME"))

@@ -3,10 +3,7 @@ package pl.dominikd.nopcommerce.demo.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.dominikd.nopcommerce.demo.base.TestBase;
-import pl.dominikd.nopcommerce.demo.pages.MainPage;
-import pl.dominikd.nopcommerce.demo.pages.ProductPage;
-import pl.dominikd.nopcommerce.demo.pages.SearchResultPage;
-import pl.dominikd.nopcommerce.demo.pages.ShoppingCartPage;
+import pl.dominikd.nopcommerce.demo.pages.*;
 import pl.dominikd.utils.StringUtils;
 
 import java.util.List;
@@ -64,7 +61,7 @@ public class NopcommerceDemoTest extends TestBase {
 
     @Test
     public void testDropDownMenu() {
-
+// FIXME: 22.10.2019 
     }
 
     @Test
@@ -97,4 +94,21 @@ public class NopcommerceDemoTest extends TestBase {
                 "Shopping cart does not contain added product");
     }
 
+    @Test
+    public void testRegisterFormErrorsEmptyForm() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openRegisterForm();
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.submitForm();
+        String firstNameError = registerPage.getFirstNameError();
+        String lastNameError = registerPage.getLastNameError();
+        String emailError = registerPage.getEmailError();
+        String passwordError = registerPage.getPasswordError();
+        String passwordConfirmError = registerPage.getPasswordConfirmError();
+        Assert.assertNotEquals(firstNameError, "");
+        Assert.assertNotEquals(lastNameError, "");
+        Assert.assertNotEquals(emailError, "");
+        Assert.assertNotEquals(passwordError, "");
+        Assert.assertNotEquals(passwordConfirmError, "");
+    }
 }

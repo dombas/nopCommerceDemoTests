@@ -29,6 +29,9 @@ public class BasePage extends AbstractPage {
     @FindBy(css = "a.ico-cart")
     private WebElement shoppingCartLink;
 
+    @FindBy(css = "a.ico-register")
+    private WebElement registerLink;
+
     public BasePage(WebDriver driver) {
         super(driver);
         this.currencySelect = new Select(wannabeCurrencySelect);
@@ -51,12 +54,21 @@ public class BasePage extends AbstractPage {
     }
 
     public void openShoppingCart() {
+        waitForNotificationBarToDisappear();
+        shoppingCartLink.click();
+    }
+
+    public void openRegisterForm() {
+        waitForNotificationBarToDisappear();
+        registerLink.click();
+    }
+
+    public void waitForNotificationBarToDisappear() {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
         try {
             webDriverWait.until(ExpectedConditions.invisibilityOf(notificationBar));
         } catch (NoSuchElementException e) {
         }
-        shoppingCartLink.click();
     }
 
     public void closeNotification() {
