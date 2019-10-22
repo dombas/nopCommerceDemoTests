@@ -12,12 +12,14 @@ import pl.dominikd.utils.NopTestConfig;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     private static final String NOP_CONFIG_XML = "../nop-test-config.xml";
+    private static final String FALLBACK_NOP_CONFIG_XML = "./nop-test-config.xml";
     protected WebDriver driver;
     private String url;
     private String chosenWebDriver;
@@ -26,8 +28,14 @@ public class TestBase {
     public void setWebDriverPath() throws JAXBException, IOException {
         JAXBContext context = JAXBContext.newInstance(NopTestConfig.class);
         Unmarshaller um = context.createUnmarshaller();
-        NopTestConfig nopTestConfig = (NopTestConfig) um.unmarshal(new FileReader(
-                NOP_CONFIG_XML));
+        NopTestConfig nopTestConfig;
+        try {
+            nopTestConfig = (NopTestConfig) um.unmarshal(new FileReader(
+                    NOP_CONFIG_XML));
+        } catch (FileNotFoundException e) {
+            nopTestConfig = (NopTestConfig) um.unmarshal(new FileReader(
+                    FALLBACK_NOP_CONFIG_XML));
+        }
 
         System.setProperty("webdriver.chrome.driver", nopTestConfig.getChromeDriverPath());
         System.setProperty("webdriver.gecko.driver", nopTestConfig.getGeckoDriverPath());

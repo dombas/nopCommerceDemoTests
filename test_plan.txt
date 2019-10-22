@@ -22,7 +22,8 @@ Product pages
     adding to product comparison
 
 Shopping cart
-  check if it contains the same products we added (amounts, prices, configurations)
+  OK check if it contains the same products we added
+  (amounts, prices, configurations)
   changing items quantity
   removing items
   gift wrapping, discount code, gift card, estimate shipping forms

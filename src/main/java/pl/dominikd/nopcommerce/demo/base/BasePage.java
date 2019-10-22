@@ -1,24 +1,33 @@
 package pl.dominikd.nopcommerce.demo.base;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends AbstractPage {
 
     @FindBy(id = "customerCurrency")
-    WebElement wannabeCurrencySelect;
-    Select currencySelect;
+    private WebElement wannabeCurrencySelect;
+    private Select currencySelect;
 
     @FindBy(id = "small-searchterms")
-    WebElement searchInput;
+    private WebElement searchInput;
 
     @FindBy(className = "search-box-button")
-    WebElement searchButton;
+    private WebElement searchButton;
 
-    @FindBy(className = "cart-label")
-    WebElement cartLink;
+    @FindBy(id = "bar-notification")
+    private WebElement notificationBar;
+
+    @FindBy(css = ".bar-notification>.close")
+    private WebElement barNotificationCloseSpan;
+
+    @FindBy(css = "a.ico-cart")
+    private WebElement shoppingCartLink;
 
     public BasePage(WebDriver driver) {
         super(driver);
@@ -42,6 +51,16 @@ public class BasePage extends AbstractPage {
     }
 
     public void openShoppingCart() {
-        cartLink.click();
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        try {
+            webDriverWait.until(ExpectedConditions.invisibilityOf(notificationBar));
+        } catch (NoSuchElementException e) {
+        }
+        shoppingCartLink.click();
     }
+
+    public void closeNotification() {
+        barNotificationCloseSpan.click();
+    }
+
 }

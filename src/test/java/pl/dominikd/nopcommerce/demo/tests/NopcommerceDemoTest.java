@@ -87,6 +87,7 @@ public class NopcommerceDemoTest extends TestBase {
         // add HTC to cart
         ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();
+        productPage.closeNotification();
         // enter shopping cart page
         productPage.openShoppingCart();
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
