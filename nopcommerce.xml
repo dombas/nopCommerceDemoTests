@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="nopcommerce_demo_suite">
-    <test name="main page tests">
+    <test name="main_page_tests">
         <classes>
-            <class name="pl.dominikd.nopcommerce.demo.tests.NopcommerceDemoTest">
+            <class name="pl.dominikd.nopcommerce.demo.tests.MainPageTest">
                 <methods>
                     <include name="testTitle"/>
                     <include name="testCurrencyEuro"/>
@@ -15,13 +15,23 @@
             </class>
         </classes>
     </test>
-    <test name="register form tests">
+    <test name="register_form_tests">
         <classes>
-            <class name="pl.dominikd.nopcommerce.demo.tests.NopcommerceDemoRegisterFormTest">
+            <class name="pl.dominikd.nopcommerce.demo.tests.RegisterFormTest">
                 <methods>
                     <include name="testRegisterFormErrorsEmptyForm"/>
                     <include name="testRegisterFormShortPassword"/>
                     <include name="testRegisterFormWrongPasswordConfirmation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="login_form_tests">
+        <classes>
+            <class name="pl.dominikd.nopcommerce.demo.tests.LoginFormTest">
+                <methods>
+                    <include name="testSubmitEmptyForm"/>
+                    <include name="testSubmitWrongPassword"/>
                 </methods>
             </class>
         </classes>

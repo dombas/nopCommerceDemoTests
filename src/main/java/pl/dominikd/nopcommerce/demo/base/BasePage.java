@@ -32,6 +32,15 @@ public class BasePage extends AbstractPage {
     @FindBy(css = "a.ico-register")
     private WebElement registerLink;
 
+    @FindBy(css = "a.ico-login")
+    private WebElement loginLink;
+
+    @FindBy(css = "a.ico-logout")
+    private WebElement logoutLink;
+
+    @FindBy(id = "newsletter-subscribe-button")
+    private WebElement subscribeButton;
+
     public BasePage(WebDriver driver) {
         super(driver);
         this.currencySelect = new Select(wannabeCurrencySelect);
@@ -63,11 +72,16 @@ public class BasePage extends AbstractPage {
         registerLink.click();
     }
 
-    public void waitForNotificationBarToDisappear() {
+    public void openLoginForm() {
+        waitForNotificationBarToDisappear();
+        loginLink.click();
+    }
+
+    private void waitForNotificationBarToDisappear() {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
         try {
             webDriverWait.until(ExpectedConditions.invisibilityOf(notificationBar));
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException ignored) {
         }
     }
 
@@ -75,4 +89,11 @@ public class BasePage extends AbstractPage {
         barNotificationCloseSpan.click();
     }
 
+    public boolean isLoggedIn() {
+        try {
+            return logoutLink.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 }

@@ -8,7 +8,7 @@ Main page
 
 Registration
   test valid form
-  for each form input: test invalid data (form should not send, a message on correcting the entry should be shown)
+  OK for each form input: test invalid data (form should not send, a message on correcting the entry should be shown)
 
 Login
   test valid form

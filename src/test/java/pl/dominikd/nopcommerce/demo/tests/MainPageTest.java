@@ -13,10 +13,10 @@ import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-public class NopcommerceDemoTest extends TestBase {
+public class MainPageTest extends TestBase {
     private final String testSearchQuery = "htc";
 
-    public NopcommerceDemoTest() throws JAXBException, FileNotFoundException {
+    public MainPageTest() throws JAXBException, FileNotFoundException {
         super();
     }
 
@@ -30,7 +30,7 @@ public class NopcommerceDemoTest extends TestBase {
     }
 
     @Test
-    public void testCurrencyEuro() throws InterruptedException {
+    public void testCurrencyEuro() {
         MainPage mainPage = new MainPage(driver);
 
         mainPage.selectCurrencyEuro();
@@ -42,7 +42,7 @@ public class NopcommerceDemoTest extends TestBase {
     }
 
     @Test
-    public void testCurrencyDollar() throws InterruptedException {
+    public void testCurrencyDollar() {
         MainPage mainPage = new MainPage(driver);
 
         mainPage.selectCurrencyDollars();
@@ -85,7 +85,7 @@ public class NopcommerceDemoTest extends TestBase {
     }
 
     @Test
-    public void testAddToCart() throws InterruptedException {
+    public void testAddToCart() {
         MainPage mainPage = new MainPage(driver);
         // go to HTC product page
         String nameFragment = "htc";

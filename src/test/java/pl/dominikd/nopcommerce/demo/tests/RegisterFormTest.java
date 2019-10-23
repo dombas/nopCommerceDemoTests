@@ -9,9 +9,9 @@ import pl.dominikd.nopcommerce.demo.pages.RegisterPage;
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
-public class NopcommerceDemoRegisterFormTest extends TestBase {
+public class RegisterFormTest extends TestBase {
 
-    public NopcommerceDemoRegisterFormTest() throws JAXBException, FileNotFoundException {
+    public RegisterFormTest() throws JAXBException, FileNotFoundException {
         super();
     }
 
@@ -58,4 +58,6 @@ public class NopcommerceDemoRegisterFormTest extends TestBase {
         String passwordConfirmationError = registerPage.getPasswordConfirmError();
         Assert.assertNotEquals(passwordConfirmationError, "", "Password confirmation error should not be empty");
     }
+
+
 }
