@@ -126,7 +126,7 @@ public class RegisterPage extends BasePage {
     }
 
     public void submitForm() {
-        submitButton.click();
+        submitButton.submit();
     }
 
     public String getFirstNameError() {

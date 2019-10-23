@@ -3,5 +3,5 @@
     <chromeDriverPath>C:\IdeaProjects\nop\chromedriver.exe</chromeDriverPath>
     <geckoDriverPath>C:\IdeaProjects\nop\geckodriver.exe</geckoDriverPath>
     <url>https://demo.nopcommerce.com/</url>
-    <webDriver>FIREFOX</webDriver>
+    <webDriver>CHROME</webDriver>
 </nopTestConfig>

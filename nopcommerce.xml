@@ -11,7 +11,17 @@
                     <include name="testSearch"/>
                     <include name="testOpenProductPage"/>
                     <include name="testAddToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="register form tests">
+        <classes>
+            <class name="pl.dominikd.nopcommerce.demo.tests.NopcommerceDemoRegisterFormTest">
+                <methods>
                     <include name="testRegisterFormErrorsEmptyForm"/>
+                    <include name="testRegisterFormShortPassword"/>
+                    <include name="testRegisterFormWrongPasswordConfirmation"/>
                 </methods>
             </class>
         </classes>
