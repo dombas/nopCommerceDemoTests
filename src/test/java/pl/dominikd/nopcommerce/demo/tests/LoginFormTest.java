@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 
 public class LoginFormTest extends TestBase {
 
-    private String email = "dombas13@gmail.com";
-    private String password = "T@zvKtuvTd8sdqL";
-    private String wrongPassword = "adofiajsif";
+    private final String email = "dombas13@gmail.com";
+    private final String password = "T@zvKtuvTd8sdqL";
+    private final String wrongPassword = "adofiajsif";
 
     public LoginFormTest() throws JAXBException, FileNotFoundException {
         super();

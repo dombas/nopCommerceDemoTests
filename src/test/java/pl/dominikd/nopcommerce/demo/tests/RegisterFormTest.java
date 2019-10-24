@@ -59,5 +59,15 @@ public class RegisterFormTest extends TestBase {
         Assert.assertNotEquals(passwordConfirmationError, "", "Password confirmation error should not be empty");
     }
 
-
+    @Test
+    public void testRegisterFormWrongEmail() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openRegisterForm();
+        RegisterPage registerPage = new RegisterPage(driver);
+        String email = "12345";
+        registerPage.enterEmail(email);
+        registerPage.submitForm();
+        String emailError = registerPage.getEmailError();
+        Assert.assertNotEquals(emailError, "", "Email error should not be empty");
+    }
 }
