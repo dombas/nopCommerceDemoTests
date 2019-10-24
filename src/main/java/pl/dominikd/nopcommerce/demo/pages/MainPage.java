@@ -12,10 +12,10 @@ import java.util.List;
 public class MainPage extends BasePage {
 
     @FindBy(className = "actual-price")
-    List<WebElement> priceSpans;
+    private List<WebElement> priceSpans;
 
     @FindBy(className = "product-title")
-    List<WebElement> productLinks;
+    private List<WebElement> productLinks;
 
     public MainPage(WebDriver driver) {
         super(driver);

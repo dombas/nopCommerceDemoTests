@@ -22,6 +22,7 @@
                     <include name="testRegisterFormErrorsEmptyForm"/>
                     <include name="testRegisterFormShortPassword"/>
                     <include name="testRegisterFormWrongPasswordConfirmation"/>
+                    <include name="testRegisterFormWrongEmail"/>
                 </methods>
             </class>
         </classes>
@@ -32,6 +33,7 @@
                 <methods>
                     <include name="testSubmitEmptyForm"/>
                     <include name="testSubmitWrongPassword"/>
+                    <include name="testCorrectLogin"/>
                 </methods>
             </class>
         </classes>

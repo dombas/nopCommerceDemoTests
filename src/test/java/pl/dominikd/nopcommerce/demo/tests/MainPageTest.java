@@ -77,11 +77,12 @@ public class MainPageTest extends TestBase {
     public void testOpenProductPage() {
         String nameFragment = "htc";
         MainPage mainPage = new MainPage(driver);
-        mainPage.openProductPageByName(nameFragment);
+        Assert.assertTrue(mainPage.openProductPageByName(nameFragment), "Could not open product page");
 
         ProductPage productPage = new ProductPage(driver);
         String productName = productPage.getProductName();
-        Assert.assertTrue(StringUtils.containsIgnoreCase(productName, nameFragment));
+        Assert.assertTrue(StringUtils.containsIgnoreCase(productName, nameFragment),
+                "Opened product page has wrong product name");
     }
 
     @Test
@@ -89,7 +90,7 @@ public class MainPageTest extends TestBase {
         MainPage mainPage = new MainPage(driver);
         // go to HTC product page
         String nameFragment = "htc";
-        mainPage.openProductPageByName(nameFragment);
+        Assert.assertTrue(mainPage.openProductPageByName(nameFragment), "Could not open product page");
         // add HTC to cart
         ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();

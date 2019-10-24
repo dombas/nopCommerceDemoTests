@@ -8,10 +8,10 @@ import pl.dominikd.nopcommerce.demo.base.BasePage;
 public class ProductPage extends BasePage {
 
     @FindBy(className = "product-name")
-    WebElement productNameDiv;
+    private WebElement productNameDiv;
 
     @FindBy(className = "add-to-cart-button")
-    WebElement addToCartButton;
+    private WebElement addToCartButton;
 
     public ProductPage(WebDriver driver) {
         super(driver);

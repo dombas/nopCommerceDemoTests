@@ -11,7 +11,7 @@ import java.util.List;
 public class SearchResultPage extends BasePage {
 
     @FindBy(className = "product-title")
-    List<WebElement> productTitles;
+    private List<WebElement> productTitles;
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
