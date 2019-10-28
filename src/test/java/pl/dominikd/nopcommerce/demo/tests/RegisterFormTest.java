@@ -2,14 +2,14 @@ package pl.dominikd.nopcommerce.demo.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.dominikd.nopcommerce.demo.base.TestBase;
+import pl.dominikd.nopcommerce.demo.base.AccountTestBase;
 import pl.dominikd.nopcommerce.demo.pages.MainPage;
 import pl.dominikd.nopcommerce.demo.pages.RegisterPage;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
-public class RegisterFormTest extends TestBase {
+public class RegisterFormTest extends AccountTestBase {
 
     public RegisterFormTest() throws JAXBException, FileNotFoundException {
         super();
@@ -69,5 +69,19 @@ public class RegisterFormTest extends TestBase {
         registerPage.submitForm();
         String emailError = registerPage.getEmailError();
         Assert.assertNotEquals(emailError, "", "Email error should not be empty");
+    }
+
+    @Test
+    public void testRegister() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openRegisterForm();
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.enterFirstName(accountFirstName);
+        registerPage.enterLastName(accountLastName);
+        registerPage.enterEmail(accountEmail);
+        registerPage.enterPassword(accountPassword);
+        registerPage.enterPasswordConfirmation(accountPassword);
+        registerPage.submitForm();
+        Assert.assertTrue(registerPage.isLoggedIn(), "Did not log in automatically");
     }
 }
