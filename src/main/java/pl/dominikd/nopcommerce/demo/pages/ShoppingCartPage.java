@@ -4,16 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pl.dominikd.nopcommerce.demo.base.BasePage;
 import pl.dominikd.nopcommerce.demo.base.ProductInShoppingCart;
+import pl.dominikd.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartPage extends BasePage {
 
-    @FindBy(className = "product-name")
-    private List<WebElement> productNameElements;
+    @FindBy(className = "update-cart-button")
+    private WebElement updateCartButton;
+
+    @FindBy(className = "page-title")
+    private WebElement pageTitleElement;
 
     private List<ProductInShoppingCart> productInShoppingCartListCache;
     private boolean isProductListValid;
@@ -21,6 +26,10 @@ public class ShoppingCartPage extends BasePage {
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
         isProductListValid = false;
+    }
+
+    public void selfCheck() {
+        Assert.assertTrue(StringUtils.containsIgnoreCase(pageTitleElement.getText(), "Shopping cart"), "Expected to find \"shopping cart\" in title");
     }
 
     public List<String> getProductNames() {
@@ -49,5 +58,10 @@ public class ShoppingCartPage extends BasePage {
             productInShoppingCartListCache.add(productInShoppingCart);
         }
         isProductListValid = true;
+    }
+
+    public void updateCart() {
+        updateCartButton.click();
+        isProductListValid = false;
     }
 }

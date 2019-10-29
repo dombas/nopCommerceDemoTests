@@ -19,7 +19,7 @@ Product pages
     customization forms
       valid and invalid data
   OK adding to cart
-  adding to productInShoppingCart comparison
+  adding to product comparison
 
 Shopping cart
   OK check if it contains the same products we added

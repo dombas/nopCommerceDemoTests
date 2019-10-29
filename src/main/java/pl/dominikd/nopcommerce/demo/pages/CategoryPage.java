@@ -36,4 +36,8 @@ public class CategoryPage extends BasePage {
         }
     }
 
+    public List<ProductInResults> getProductsList() {
+        return productsInResults;
+    }
+
 }

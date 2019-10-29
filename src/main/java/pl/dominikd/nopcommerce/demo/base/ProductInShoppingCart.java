@@ -24,4 +24,20 @@ public class ProductInShoppingCart {
         return nameElement.getText();
     }
 
+    private int trimCurrencyAndCents(String priceText) {
+        return Integer.parseInt(priceText.substring(1, priceText.length() - 3));
+    }
+
+    public int getTotal() {
+        return trimCurrencyAndCents(totalElement.getText());
+    }
+
+    public int getPrice() {
+        return trimCurrencyAndCents(priceElement.getText());
+    }
+
+    public void setQuantity(int quantity) {
+        quantityInput.clear();
+        quantityInput.sendKeys(Integer.toString(quantity));
+    }
 }
