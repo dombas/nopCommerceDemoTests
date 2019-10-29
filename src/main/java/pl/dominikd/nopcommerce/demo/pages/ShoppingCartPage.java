@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pl.dominikd.nopcommerce.demo.base.BasePage;
-import pl.dominikd.nopcommerce.demo.base.Product;
+import pl.dominikd.nopcommerce.demo.base.ProductInShoppingCart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(className = "product-name")
     private List<WebElement> productNameElements;
 
-    private List<Product> productListCache;
+    private List<ProductInShoppingCart> productInShoppingCartListCache;
     private boolean isProductListValid;
 
     public ShoppingCartPage(WebDriver driver) {
@@ -25,28 +25,28 @@ public class ShoppingCartPage extends BasePage {
 
     public List<String> getProductNames() {
         List<String> productNames = new ArrayList<>();
-        List<Product> productList = getProductList();
-        for (Product product : productList) {
-            productNames.add(product.getName());
+        List<ProductInShoppingCart> productInShoppingCartList = getProductList();
+        for (ProductInShoppingCart productInShoppingCart : productInShoppingCartList) {
+            productNames.add(productInShoppingCart.getName());
         }
         return productNames;
     }
 
-    public List<Product> getProductList() {
+    public List<ProductInShoppingCart> getProductList() {
         if (!isProductListValid) {
             populateProductList();
         }
-        return productListCache;
+        return productInShoppingCartListCache;
     }
 
     private void populateProductList() {
-        productListCache = new ArrayList<>();
+        productInShoppingCartListCache = new ArrayList<>();
         WebElement cartTable = driver.findElement(By.className("cart"));
         WebElement cartTableBody = cartTable.findElement(By.tagName("tbody"));
         List<WebElement> cartTableRows = cartTableBody.findElements(By.tagName("tr"));
         for (WebElement cartTableRow : cartTableRows) {
-            Product product = new Product(cartTableRow);
-            productListCache.add(product);
+            ProductInShoppingCart productInShoppingCart = new ProductInShoppingCart(cartTableRow);
+            productInShoppingCartListCache.add(productInShoppingCart);
         }
         isProductListValid = true;
     }

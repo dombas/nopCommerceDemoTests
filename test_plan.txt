@@ -3,11 +3,11 @@ Main page
   OK currency changer
   OK search box
   SKIP categories dropdown menu (on clicking, elements should change their display:none) [done in jQuery: how to emulate hover and check for display]
-  spinner (display of <a> should change every couple seconds and by clicking on dots/squares)
-  adding to cart from main page (HTC phone)
+  SKIP spinner (display of <a> should change every couple seconds and by clicking on dots/squares)
+  SKIP adding to cart from main page (HTC phone)
 
 Registration
-  test valid form
+  OK test valid form
   OK for each form input: test invalid data (form should not send, a message on correcting the entry should be shown)
 
 Login
@@ -15,15 +15,15 @@ Login
   OK for each form input: test invalid data
 
 Product pages
-  build your own computer, macbook, gift card
+  SKIP build your own computer, macbook, gift card
     customization forms
       valid and invalid data
-    adding to cart
-    adding to product comparison
+  OK adding to cart
+  adding to productInShoppingCart comparison
 
 Shopping cart
   OK check if it contains the same products we added
-  (amounts, prices, configurations)
+    (amounts, prices, configurations)
   changing items quantity
   removing items
   gift wrapping, discount code, gift card, estimate shipping forms

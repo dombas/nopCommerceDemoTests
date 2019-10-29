@@ -3,7 +3,7 @@ package pl.dominikd.nopcommerce.demo.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Product {
+public class ProductInShoppingCart {
     private WebElement removeCheckbox;
     private WebElement skuElement;
     private WebElement nameElement;
@@ -11,7 +11,7 @@ public class Product {
     private WebElement quantityInput;
     private WebElement totalElement;
 
-    public Product(WebElement productTableRow) {
+    public ProductInShoppingCart(WebElement productTableRow) {
         removeCheckbox = productTableRow.findElement(By.name("removefromcart"));
         skuElement = productTableRow.findElement(By.className("sku-number"));
         nameElement = productTableRow.findElement(By.className("product-name"));

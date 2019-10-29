@@ -3,6 +3,7 @@ package pl.dominikd.nopcommerce.demo.base;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -38,6 +39,12 @@ public class BasePage extends AbstractPage {
     @FindBy(css = "a.ico-logout")
     private WebElement logoutLink;
 
+    @FindBy(xpath = "//*[contains(@class,'header-menu')]/ul[1]/li[2]/a")
+    private WebElement electronicsMenuLink;
+
+    @FindBy(xpath = "//*[contains(@class,'header-menu')]/ul[1]/li[2]/ul[1]/li[2]/a")
+    private WebElement cellPhonesLink;
+
     @FindBy(id = "newsletter-subscribe-button")
     private WebElement subscribeButton;
 
@@ -64,6 +71,8 @@ public class BasePage extends AbstractPage {
 
     public void openShoppingCart() {
         waitForNotificationBarToDisappear();
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(shoppingCartLink));
         shoppingCartLink.click();
     }
 
@@ -77,7 +86,15 @@ public class BasePage extends AbstractPage {
         loginLink.click();
     }
 
-    private void waitForNotificationBarToDisappear() {
+    public void openCellPhones() {
+        waitForNotificationBarToDisappear();
+        Actions openCellPhonesActions = new Actions(driver);
+        openCellPhonesActions.moveToElement(electronicsMenuLink);
+        openCellPhonesActions.click(cellPhonesLink);
+        openCellPhonesActions.build().perform();
+    }
+
+    protected void waitForNotificationBarToDisappear() {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
         try {
             webDriverWait.until(ExpectedConditions.invisibilityOf(notificationBar));

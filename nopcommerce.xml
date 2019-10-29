@@ -4,37 +4,35 @@
     <test name="main_page_tests">
         <classes>
             <class name="pl.dominikd.nopcommerce.demo.tests.MainPageTest">
-                <methods>
-                    <include name="testTitle"/>
-                    <include name="testCurrencyEuro"/>
-                    <include name="testCurrencyDollar"/>
-                    <include name="testSearch"/>
-                    <include name="testOpenProductPage"/>
-                    <include name="testAddToCart"/>
-                </methods>
+
             </class>
         </classes>
     </test>
     <test name="register_form_tests">
         <classes>
             <class name="pl.dominikd.nopcommerce.demo.tests.RegisterFormTest">
-                <methods>
-                    <include name="testRegisterFormErrorsEmptyForm"/>
-                    <include name="testRegisterFormShortPassword"/>
-                    <include name="testRegisterFormWrongPasswordConfirmation"/>
-                    <include name="testRegisterFormWrongEmail"/>
-                </methods>
+
             </class>
         </classes>
     </test>
     <test name="login_form_tests">
         <classes>
             <class name="pl.dominikd.nopcommerce.demo.tests.LoginFormTest">
-                <methods>
-                    <include name="testSubmitEmptyForm"/>
-                    <include name="testSubmitWrongPassword"/>
-                    <include name="testCorrectLogin"/>
-                </methods>
+
+            </class>
+        </classes>
+    </test>
+    <test name="products_list_tests">
+        <classes>
+            <class name="pl.dominikd.nopcommerce.demo.tests.ProductsTest">
+
+            </class>
+        </classes>
+    </test>
+    <test name="shopping_cart_tests">
+        <classes>
+            <class name="pl.dominikd.nopcommerce.demo.tests.ShoppingCartTest">
+
             </class>
         </classes>
     </test>
