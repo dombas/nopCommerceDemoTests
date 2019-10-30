@@ -1,7 +1,11 @@
 package pl.dominikd.nopcommerce.demo.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.dominikd.utils.Commons;
 
 public class ProductInShoppingCart {
     private WebElement removeCheckbox;
@@ -36,8 +40,14 @@ public class ProductInShoppingCart {
         return trimCurrencyAndCents(priceElement.getText());
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(int quantity, WebDriver driver) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(quantityInput));
         quantityInput.clear();
         quantityInput.sendKeys(Integer.toString(quantity));
+    }
+
+    public void setRemoveFromCart(boolean remove) {
+        Commons.setCheckbox(removeCheckbox, remove);
     }
 }

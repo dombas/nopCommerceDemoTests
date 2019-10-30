@@ -1,8 +1,16 @@
 package pl.dominikd.utils;
 
+import org.openqa.selenium.WebElement;
+
 import java.util.List;
 
-public class StringUtils {
+public class Commons {
+    public static void setCheckbox(WebElement checkbox, boolean value) {
+        if (value ^ checkbox.isSelected()) {
+            checkbox.click();
+        }
+    }
+
     //https://stackoverflow.com/users/1705598/icza
     //https://stackoverflow.com/a/25379180
     public static boolean containsIgnoreCase(String src, String what) {

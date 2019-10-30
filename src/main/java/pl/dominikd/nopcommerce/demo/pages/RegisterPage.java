@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import pl.dominikd.nopcommerce.demo.base.BasePage;
+import pl.dominikd.utils.Commons;
 
 public class RegisterPage extends BasePage {
 
@@ -91,9 +92,7 @@ public class RegisterPage extends BasePage {
     }
 
     public void enterNewsletter(boolean newsletter) {
-        if (newsletter ^ newsletterRadio.isSelected()) {
-            newsletterRadio.click();
-        }
+        Commons.setCheckbox(newsletterRadio, newsletter);
     }
 
     public void enterCompanyName(String companyName) {

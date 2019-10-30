@@ -20,6 +20,7 @@ public class TestBase {
     protected WebDriver driver;
     private String url;
     private String chosenWebDriver;
+    private boolean CLOSE_DRIVER = true;
 
     public TestBase() throws JAXBException, FileNotFoundException {
         JAXBContext context = JAXBContext.newInstance(NopTestConfig.class);
@@ -39,6 +40,10 @@ public class TestBase {
         this.chosenWebDriver = nopTestConfig.getWebDriver();
     }
 
+    public void setCLOSE_DRIVER(boolean CLOSE_DRIVER) {
+        this.CLOSE_DRIVER = CLOSE_DRIVER;
+    }
+
     @BeforeMethod
     public void setUp() {
         if (chosenWebDriver.equals("FIREFOX"))
@@ -52,9 +57,12 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        // chrome driver leaves processes running unless we first close() and then quit()
-        if (chosenWebDriver.equals("CHROME"))
-            driver.close();
-        driver.quit();
+
+        if (CLOSE_DRIVER) {
+            // chrome driver leaves processes running unless we first close() and then quit()
+            if (chosenWebDriver.equals("CHROME"))
+                driver.close();
+            driver.quit();
+        }
     }
 }

@@ -1,13 +1,14 @@
 package pl.dominikd.nopcommerce.demo.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pl.dominikd.nopcommerce.demo.base.BasePage;
 import pl.dominikd.nopcommerce.demo.base.ProductInShoppingCart;
-import pl.dominikd.utils.StringUtils;
+import pl.dominikd.utils.Commons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void selfCheck() {
-        Assert.assertTrue(StringUtils.containsIgnoreCase(pageTitleElement.getText(), "Shopping cart"), "Expected to find \"shopping cart\" in title");
+        Assert.assertTrue(Commons.containsIgnoreCase(pageTitleElement.getText(), "Shopping cart"), "Expected to find \"shopping cart\" in title");
     }
 
     public List<String> getProductNames() {
@@ -50,12 +51,15 @@ public class ShoppingCartPage extends BasePage {
 
     private void populateProductList() {
         productInShoppingCartListCache = new ArrayList<>();
-        WebElement cartTable = driver.findElement(By.className("cart"));
-        WebElement cartTableBody = cartTable.findElement(By.tagName("tbody"));
-        List<WebElement> cartTableRows = cartTableBody.findElements(By.tagName("tr"));
-        for (WebElement cartTableRow : cartTableRows) {
-            ProductInShoppingCart productInShoppingCart = new ProductInShoppingCart(cartTableRow);
-            productInShoppingCartListCache.add(productInShoppingCart);
+        try {
+            WebElement cartTable = driver.findElement(By.className("cart"));
+            WebElement cartTableBody = cartTable.findElement(By.tagName("tbody"));
+            List<WebElement> cartTableRows = cartTableBody.findElements(By.tagName("tr"));
+            for (WebElement cartTableRow : cartTableRows) {
+                ProductInShoppingCart productInShoppingCart = new ProductInShoppingCart(cartTableRow);
+                productInShoppingCartListCache.add(productInShoppingCart);
+            }
+        } catch (NoSuchElementException ignored) {
         }
         isProductListValid = true;
     }

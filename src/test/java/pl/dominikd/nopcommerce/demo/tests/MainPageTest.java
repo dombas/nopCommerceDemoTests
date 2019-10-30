@@ -7,7 +7,7 @@ import pl.dominikd.nopcommerce.demo.pages.MainPage;
 import pl.dominikd.nopcommerce.demo.pages.ProductPage;
 import pl.dominikd.nopcommerce.demo.pages.SearchResultPage;
 import pl.dominikd.nopcommerce.demo.pages.ShoppingCartPage;
-import pl.dominikd.utils.StringUtils;
+import pl.dominikd.utils.Commons;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
@@ -63,14 +63,9 @@ public class MainPageTest extends TestBase {
 
         List<String> productTitles = searchResultPage.getSearchResultProductTitleTexts();
         for (String productTitle : productTitles) {
-            Assert.assertTrue(StringUtils.containsIgnoreCase(productTitle, testSearchQuery),
+            Assert.assertTrue(Commons.containsIgnoreCase(productTitle, testSearchQuery),
                     "one of the search results doesn't contain the search query (\"testSearchQuery\")");
         }
-    }
-
-    @Test
-    public void testDropDownMenu() {
-// FIXME: 22.10.2019 
     }
 
     @Test
@@ -81,7 +76,7 @@ public class MainPageTest extends TestBase {
 
         ProductPage productPage = new ProductPage(driver);
         String productName = productPage.getProductName();
-        Assert.assertTrue(StringUtils.containsIgnoreCase(productName, nameFragment),
+        Assert.assertTrue(Commons.containsIgnoreCase(productName, nameFragment),
                 "Opened product page has wrong product name");
     }
 
@@ -100,7 +95,7 @@ public class MainPageTest extends TestBase {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         // check if HTC is in cart
         List<String> productNames = shoppingCartPage.getProductNames();
-        Assert.assertTrue(StringUtils.listContainsIgnoreCase(productNames, nameFragment),
+        Assert.assertTrue(Commons.listContainsIgnoreCase(productNames, nameFragment),
                 "Shopping cart does not contain added product");
     }
 

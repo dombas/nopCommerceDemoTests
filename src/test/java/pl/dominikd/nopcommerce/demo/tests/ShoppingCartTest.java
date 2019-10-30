@@ -14,10 +14,12 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class ShoppingCartTest extends TestBase {
+    private ShoppingCartPage shoppingCartPage;
+    private List<ProductInShoppingCart> products;
+
     public ShoppingCartTest() throws JAXBException, FileNotFoundException {
         super();
     }
-//    changing items quantity
 //    removing items
 //    gift wrapping, discount code, gift card, estimate shipping forms
 //    terms of service popup
@@ -30,21 +32,35 @@ public class ShoppingCartTest extends TestBase {
         categoryPage.getProductsList().get(0).addToCart(driver);
         categoryPage.closeNotification();
         categoryPage.openShoppingCart();
+        refreshPageObjects();
+        shoppingCartPage.selfCheck();
+    }
+
+    private void refreshPageObjects() {
+        shoppingCartPage = new ShoppingCartPage(driver);
+        products = shoppingCartPage.getProductList();
+    }
+
+    private void updateCart() {
+        shoppingCartPage.updateCart();
+        refreshPageObjects();
     }
 
     @Test
     public void testChangeQuantity() {
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        shoppingCartPage.selfCheck();
-        List<ProductInShoppingCart> products = shoppingCartPage.getProductList();
         ProductInShoppingCart product = products.get(0);
         int testQuantity = 3;
-        product.setQuantity(testQuantity);
-        shoppingCartPage.updateCart();
-
-        shoppingCartPage = new ShoppingCartPage(driver);
-        products = shoppingCartPage.getProductList();
+        product.setQuantity(testQuantity, driver);
+        updateCart();
         product = products.get(0);
-        Assert.assertEquals(product.getPrice() * testQuantity, product.getTotal(), "Total price doesn't match the entered quantity");
+        Assert.assertEquals(product.getTotal(), product.getPrice() * testQuantity, "Total price doesn't match the entered quantity");
+    }
+
+    @Test
+    public void testRemoveFromCart() {
+        ProductInShoppingCart product = products.get(0);
+        product.setRemoveFromCart(true);
+        updateCart();
+        Assert.assertEquals(products.size(), 0, "Expected shopping cart to be empty");
     }
 }
