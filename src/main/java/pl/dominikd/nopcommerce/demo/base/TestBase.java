@@ -65,4 +65,8 @@ public class TestBase {
             driver.quit();
         }
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 }

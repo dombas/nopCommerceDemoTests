@@ -14,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class MainPageTest extends TestBase {
-    private final String testSearchQuery = "htc";
 
     public MainPageTest() throws JAXBException, FileNotFoundException {
         super();
@@ -55,6 +54,7 @@ public class MainPageTest extends TestBase {
     @Test
     public void testSearch() {
         MainPage mainPage = new MainPage(driver);
+        String testSearchQuery = "htc";
         mainPage.sendKeysToSearchInput(testSearchQuery);
         mainPage.clickSearchSubmitButton();
 
