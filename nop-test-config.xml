@@ -4,4 +4,5 @@
     <geckoDriverPath>C:\IdeaProjects\nop\geckodriver.exe</geckoDriverPath>
     <url>https://demo.nopcommerce.com/</url>
     <webDriver>CHROME</webDriver>
+    <runHeadless>FALSE</runHeadless>
 </nopTestConfig>
