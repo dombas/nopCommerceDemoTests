@@ -21,6 +21,7 @@ public class TestBase {
     protected WebDriver driver;
     private String url;
     private String chosenWebDriver;
+    private String runHeadless;
     private boolean CLOSE_DRIVER = true;
 
     public TestBase() throws JAXBException, FileNotFoundException {
@@ -39,6 +40,7 @@ public class TestBase {
         System.setProperty("webdriver.gecko.driver", nopTestConfig.getGeckoDriverPath());
         this.url = nopTestConfig.getUrl();
         this.chosenWebDriver = nopTestConfig.getWebDriver();
+        this.runHeadless = nopTestConfig.getRunHeadless();
     }
 
     public void setCLOSE_DRIVER(boolean CLOSE_DRIVER) {
@@ -50,9 +52,11 @@ public class TestBase {
         if (chosenWebDriver.equals("FIREFOX"))
             driver = new FirefoxDriver();
         else {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headless", "--disable-gpu", "window-size=1980,1024");
-            driver = new ChromeDriver(chromeOptions);
+            if (runHeadless.equals("TRUE")) {
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless", "--disable-gpu", "window-size=1980,1024");
+                driver = new ChromeDriver(chromeOptions);
+            }
         }
 
         driver.manage().window().maximize();

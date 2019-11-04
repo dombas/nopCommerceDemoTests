@@ -8,6 +8,7 @@ public class NopTestConfig {
     private String chromeDriverPath;
     private String url;
     private String webDriver;
+    private String runHeadless;
 
     public String getGeckoDriverPath() {
         return geckoDriverPath;
@@ -39,5 +40,13 @@ public class NopTestConfig {
 
     public void setWebDriver(String webDriver) {
         this.webDriver = webDriver;
+    }
+
+    public String getRunHeadless() {
+        return runHeadless;
+    }
+
+    public void setRunHeadless(String runHeadless) {
+        this.runHeadless = runHeadless;
     }
 }
