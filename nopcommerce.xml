@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="nopcommerce_demo_suite">
+    <listeners>
+        <listener class-name="pl.dominikd.nopcommerce.demo.listeners.ListenerClass"/>
+    </listeners>
     <test name="main_page_tests">
         <classes>
             <class name="pl.dominikd.nopcommerce.demo.tests.MainPageTest">

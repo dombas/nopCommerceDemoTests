@@ -2,6 +2,7 @@ package pl.dominikd.nopcommerce.demo.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -48,8 +49,12 @@ public class TestBase {
     public void setUp() {
         if (chosenWebDriver.equals("FIREFOX"))
             driver = new FirefoxDriver();
-        else
-            driver = new ChromeDriver();
+        else {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless", "--disable-gpu", "window-size=1980,1024");
+            driver = new ChromeDriver(chromeOptions);
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
