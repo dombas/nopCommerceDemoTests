@@ -56,10 +56,11 @@ public class TestBase {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless", "--disable-gpu", "window-size=1980,1024");
                 driver = new ChromeDriver(chromeOptions);
+            } else {
+                driver = new ChromeDriver();
+                driver.manage().window().maximize();
             }
         }
-
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
     }
